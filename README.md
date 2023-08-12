@@ -1,7 +1,7 @@
 
 # Advanced Physical Design Workshop using OpenLane/Sky130
 
-!(./images/cover_img_vsd.png)
+![](https://github.com/shobhit-mittra/vsd_pd_workshop/blob/main/images/cover_img_vsd.png?raw=true)
 
 
 
