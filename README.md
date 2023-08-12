@@ -1,7 +1,7 @@
 
 # Advanced Physical Design Workshop using OpenLane/Sky130
 
-// cover image here
+!(images/cover_img_vsd.png)
 
 
 
