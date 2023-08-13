@@ -162,15 +162,62 @@ The process of experiencing the ASIC designing is easier than ever due to the co
 <a id="rtl_gds2"></a>
 ### Introduction to RTL-to-GDS2 flow : 
 
-In an ASIC Design, the RTL-to-GDS2 flow is demonstrated in the illustration below : 
+In an ASIC Design, the typical RTL-to-GDS2 flow is demonstrated in the illustration below : 
 
-![RTL-to-GDS2 flow](/images/)
+![RTL-to-GDS2 flow](/images/rtl_gds2_flow.png)
 
+In the workshop, a simplified version of this flow was introduced which is just enough to grasp the idea of the overall flow. This simplified flow is demonstrated below : 
 
+![RTL-to-GDS2_simplified_flow](/images/rtl_gsd2_sim_flow)
+
+These steps can be briefly explained follows :
+
+- Sythesis :
+- Floor Planning and Power Planning :
+- Placement :
+- Clock-Tree Synthesis (CTS) :
+- Routing :
+- Signoff :
 
 
 <a id="ol_flow"></a>
 ### OpenLANE flow : 
 
+There are various steps to the OpenLANE flow. By default, each step of the flow is carried out in sequence. There may be several sub-stages within each stage. As demonstrated below, OpenLANE can also be used interactively.
 
+![OpenLANE flow](/images/openlane_flow)
+
+Synthesis :
+   - Yosys : Performs RTL synthesis
+   - abc : Conducts technology mapping to the reference cells in the PDK. To get desired results, synthesis procedures can be modified utilising various integrated abc scripts.
+   - OpenSTA : Performs static timing analysis on the resulting netlist to generate timing reports
+   - Fault : Scan-chain insertion used for testing post fabrication. Supports ATPG and test patterns compaction
+
+Floorplan and PDN (Power Distribution Network) :
+   - Init_fp : Defines the core area for the macro as well as the rows (used for placement) and the tracks (used for routing)
+   - Ioplacer : Places the macro input and output ports
+   - PDN : Generates the power distribution network
+   - Tapcell : Inserts welltap and decap cells in the floorplan
+   - Placement : It is done in two steps: first, with global placement, where designs are placed across the chip but are not legal because some standard cells overlap; second, with detailed placement, where designs are made legal and are guaranteed to fit in standard cell rows.
+   - RePLace : Performs global placement
+   - Resizer : Performs optional optimizations on the design
+   - OpenPhySyn : Performs timing optimizations on the design
+   - OpenDP : Perfroms detailed placement to legalize the globally placed components
+
+CTS :     
+   - TritonCTS : Synthesizes the clock distribution network
+  
+Routing : 
+   - FastRoute : Performs global routing to generate a guide file for the detailed router
+   - TritonRoute : Performs detailed routing from global routing guides
+   - SPEF-Extractor : Performs SPEF extraction that include parasitic information
+      
+GDSII Generation :
+   - Magic : Streams out the final GDSII layout file from the routed def
+  
+
+Checks :
+   - Magic : Performs DRC Checks & Antenna Checks
+   - Netgen : Performs LVS Checks
+      
 
