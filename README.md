@@ -178,14 +178,14 @@ These steps can be briefly explained follows :
 - Clock-Tree Synthesis (CTS) :
 - Routing :
 - Signoff :
-
+<br/>
 
 <a id="ol_flow"></a>
 ### OpenLANE flow : 
 
 There are various steps to the OpenLANE flow. By default, each step of the flow is carried out in sequence. There may be several sub-stages within each stage. As demonstrated below, OpenLANE can also be used interactively.
 
-![OpenLANE flow](/images/openlane_flow)
+![OpenLANE flow](/images/openlane_flow.png)
 
 Synthesis :
    - Yosys : Performs RTL synthesis
@@ -220,4 +220,6 @@ Checks :
    - Magic : Performs DRC Checks & Antenna Checks
    - Netgen : Performs LVS Checks
       
+
+
 
