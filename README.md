@@ -307,7 +307,7 @@ Evidently, there are three pdks available that can be briefly explained as follo
 - The flow.tcl is the script which runs the OpenLANE flow.
 - OpenLANE can be run interactively or in autonomous mode, the `-interactive` switch allows openlane to run in interactive mode.
 
-![Open Lane Invoking](#/images/open_lane.png)
+![Open Lane Invoking](/images/open_lane.png)
 <br/>
 
 <a id="im_pkg"></a>
@@ -375,13 +375,38 @@ Synthesis can be run using the command as under :
 > Minor Task provided in the lab : 
 >> To find out the ratio of *flop-ratio* i.e number of d-flip-flops to number of cells. For the run we have :
 >> ![Number of cells](/images/num_cells.png)
->> ######
->> ![Numer of D-Flops](/images/num_dff.)
->> ######
+>> ###### *In the snippet above, the number of cells are 14,876*
+>> ![Numer of D-Flops](/images/num_dff.png)
+>> ###### *In the snippet above, the number of cells are 1,613*
 >>
->> Hence, the `flop-ratio` comes out to be .
+>> Hence, the `flop-ratio` comes out to be **0.1084**.
 <br/>
 
+<a id="ol_cmd"></a>
+### List of vital openLANE tool commands
+
+In openlane it is extremely vital to follow the correct sequence of commands while operating it in `interactive` mode for proper functioning of the flow. The list below shows the command flow in openlane :
+
+1. `prep -design <design> -tag <tag> -config <config> -init_design_config -overwrite` similar to the command line arguments, design is required and the rest is optional
+2. `run_synthesis`
+3. `run_floorplan`
+4. `run_placement`
+5. `run_cts`
+6. `run_routing`
+7. `write_powered_verilog` followed by `set_netlist $::env(routing_logs)/$::env(DESIGN_NAME).powered.v`
+8. `run_magic`
+9. `run_magic_spice_export`
+10. `run_magic_drc`
+11. `run_lvs`
+12. `run_antenna_check`
+
+
+The above commands can also be written in a file and passed to `flow.tcl`:
+
+```
+./flow.tcl -interactive -file <file>
+```
+<br/>
 
 <a id="day2"></a>
 ## Day-2 : Floor-Planning and Introduction to Library Cells :
