@@ -354,14 +354,14 @@ The argument `-design` specifies the name of design folder. In our case, `<desig
 
 Due to running the prep command, in the `picorv32a/runs` path the results and report files is created.
 
-![Preparation Result](/images/prep_res.png)
+![Preparation Result](/images/prep_result.png)
 
 > [!IMPORTANT]
 > All of the OpenLANE parameters used for this particular run are contained in the `config.tcl` file displayed in this folder.
 
 Additionally, the information from the technology LEF and cell LEF is combined when the design is prepared in OpenLANE. Layer definitions and a set of constrained design guidelines required for PnR flow are contained in the LEF information. To reduce DRC errors during PnR flow, the cell LEF of each standard cell carries obstruction information:
 
-![Merged LEF](/images/lef_merge.png)
+![Merged LEF](/images/merge_lef.png)
 <br/>
 
 <a id="run_syn"></a>
@@ -372,4 +372,20 @@ Synthesis can be run using the command as under :
 % run_synthesis
 ```
 
-![Synthesis](/images/run_syn.png)
+> Minor Task provided in the lab : 
+>> To find out the ratio of *flop-ratio* i.e number of d-flip-flops to number of cells. For the run we have :
+>> ![Number of cells](/images/num_cells.png)
+>> ######
+>> ![Numer of D-Flops](/images/num_dff.)
+>> ######
+>>
+>> Hence, the `flop-ratio` comes out to be .
+<br/>
+
+
+<a id="day2"></a>
+## Day-2 : Floor-Planning and Introduction to Library Cells :
+
+
+
+  
