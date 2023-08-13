@@ -145,7 +145,9 @@ These three fundamental components : **RTL IP's**, **EDA Tools** and **PDK Data*
 
 Before exploring the open-source realm of VLSI, we need to develop a basic insight on the three components mentioned above. 
 - RTL IP (Register-Transfer Level Intellectual Property) : It refers to pre-designed and verified digital circuit components or modules that are described at the register transfer level (RTL) abstraction in the form of IPs. These components are ready to be integrated into larger digital designs.
+  
 - EDA Tools (Electronic Design Automation Tools) : These CAD tools are basically used to automate the processes involved in the VLSI flow. Automation allows easier fault detection and debugging, improved collaboration and faster fabrication.
+  
 -  PDK (Process Design Kit) : These are extremely crucial elements in any digital design. These basically act as an interface between FAB and designers. Collection of files used to model fabrication process for EDA tools used to design IC. Includes (not limited to ) :
       - Process Design Rules : LVS, DRC
       - Standard Cell Libraries
@@ -185,12 +187,52 @@ These steps can be briefly explained follows :
   >> ![Macro Floorplan](/images/macro_fp.png)
   >>
   >> ![Chip Floorplan](/images/chip_fp.png)
-  
-    
-- Placement : 
-- Clock-Tree Synthesis (CTS) :
-- Routing :
+<br/>
+   
+- Placement : After the FP/PP stage comes the Placement stage. In this stage, the macro cells from the gate-level netlist are placed on the designed floorplan. The connected cells are placed close to each other to minimise *inter-connect* delay and to ensure effective post-placement optimization for easier routing.
+
+  > Placemet can be visualised using the illustration below :
+  >> ![Placement Example](/images/placement_intro.png)
+  >> ###### *In this example the macro-cells of simple gate-level netlist containing inverter,nand gate, or gate and d-flip flop are placed close to each other in the floor plan.*
+
+  Placement is typically done in two steps, namely
+  - Global Placement
+  - Detailed Placement
+<br/>
+
+  > These two placement methods can be briefly explained as under :
+  >> ![Placement Types](/images/placement_types.png)
+  >> ###### *The first image shows the global placement and the second shows detailed placement.*
+  >> The global placement tries to evaluate the most optimal positions for all cells. But these positions may not be **legal**, that means the cells might overlap or may go off the floorplan allocated.
+  >> 
+  >> The detailed placement corrects the cell-overlap issue in global placement by minimally altering the positions to make them legal.
+<br/>
+
+- Clock-Tree Synthesis (CTS) : Before proceeding to routing, we need to perform the CTS on the post-placement layout. The clock needs to reach multiple cells in the layout hence, to maintain the signal integrity it needs to go through stages of buffers and repeaters. This calls for an organized network to distribute the clock across the layout. This network is known as the Clock Tree.
+
+  > The illustration below summarizes the CTS stage
+  >> ![Clock Tree Synthesis summary](/images/cts.)
+<br/>
+
+- Routing : After CTS stage, we are required to do the Routing. It involves connecting the placed macro cells for signal propagation via nets. Given placements and fixed number of metal layers, the router tools is expected to find a valid pattern of horizontal and vertical wires to implement the nets. The metal layer information is extracted by the PDK that contains the parameters such as pitch, number of tracks, thickness, minimum width, vias etc.
+
+  > Routing in *sky130 PDK* is shown as under :
+  >> ![Routing in sky130 PDK](/images/routing.)
+  >> ###### *The second figure illustrates the metal layer structure as defined in Sky130 PDK.*
+
+  > [!IMPORTANT]
+  > The sky130 PDK defines **six metal layers**, the bottomost layer made of *Titanium Nitride* is known as *Local Interconnect Layer*. The rest of the five layers are all composed of aluminium. 
+
+
+
+
+<br/>
+
 - Signoff :
+
+
+
+
 <br/>
 
 <a id="ol_flow"></a>
