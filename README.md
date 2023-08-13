@@ -17,10 +17,14 @@
         - [OpenLANE flow](#ol_flow)
 
     - Lab work :
-        - [Preparing for design](#prep_des)
-        - [Running Synthesis and reviewing generated files](#run_synth)
+        - [SkyWater PDKs](#sky_pdk)
+        - [Initialising OpenLANE](#ini_ol)
+        - [Importing Package](#im_pkg)
+        - [Design Folder Hierarchy](#des_hier)
+        - [Preparing Design](#prep_des)
+        - [Running Synthesis](#run_syn)
         - [List of vital openLANE tool commands](#ol_cmd) 
-        - [Characterizing synthesis results](#synth_res)
+          
 
 5. [Day-2 : Floor-Planning and Introduction to Library Cells](#day2) 
     - Fundamentals Learned :
@@ -191,7 +195,7 @@ These steps can be briefly explained follows :
   In power planning, the power network is constructed. Typically, a chip is powered by multiple Vdd and Vss pins. The power pins are connected to all components through power rings and horizontal/vertical straps.
   > [!NOTE]
   > The parallel cross-sectional structure (as shown in figure below) is meant to reduce the resistance and ultimately minimise the IR drop and mitigate the electro-migration problem.
-  >> ![Power Planning](/images/power_plan.png)
+  > ![Power Planning](/images/power_plan.png)
 <br/>
    
 - Placement : After the FP/PP stage comes the Placement stage. In this stage, the macro cells from the gate-level netlist are placed on the designed floorplan. The connected cells are placed close to each other to minimise *inter-connect* delay and to ensure effective post-placement optimization for easier routing.
@@ -246,44 +250,126 @@ There are various steps to the OpenLANE flow. By default, each step of the flow 
 ![OpenLANE flow](/images/openlane_flow.png)
 
 Synthesis :
-   - Yosys : Performs RTL synthesis
-   - abc : Conducts technology mapping to the reference cells in the PDK. To get desired results, synthesis procedures can be modified utilising various integrated abc scripts.
-   - OpenSTA : Performs static timing analysis on the resulting netlist to generate timing reports
-   - Fault : Scan-chain insertion used for testing post fabrication. Supports ATPG and test patterns compaction
+   - `Yosys` : Performs RTL synthesis
+   - `abc` : Conducts technology mapping to the reference cells in the PDK. To get desired results, synthesis procedures can be modified utilising various integrated abc scripts.
+   - `OpenSTA` : Performs static timing analysis on the resulting netlist to generate timing reports
+   - `Fault` : Scan-chain insertion used for testing post fabrication. Supports ATPG and test patterns compaction
 
 Floorplan and PDN (Power Distribution Network) :
-   - Init_fp : Defines the core area for the macro as well as the rows (used for placement) and the tracks (used for routing)
-   - Ioplacer : Places the macro input and output ports
-   - PDN : Generates the power distribution network
-   - Tapcell : Inserts welltap and decap cells in the floorplan
-   - Placement : It is done in two steps: first, with global placement, where designs are placed across the chip but are not legal because some standard cells overlap; second, with detailed placement, where designs are made legal and are guaranteed to fit in standard cell rows.
-   - RePLace : Performs global placement
-   - Resizer : Performs optional optimizations on the design
-   - OpenPhySyn : Performs timing optimizations on the design
-   - OpenDP : Perfroms detailed placement to legalize the globally placed components
+   - `Init_fp` : Defines the core area for the macro as well as the rows (used for placement) and the tracks (used for routing)
+   - `Ioplacer` : Places the macro input and output ports
+   - `PDN` : Generates the power distribution network
+   - `Tapcell` : Inserts welltap and decap cells in the floorplan
+   - `Placement` : It is done in two steps: first, with global placement, where designs are placed across the chip but are not legal because some standard cells overlap; second, with detailed placement, where designs are made legal and are guaranteed to fit in standard cell rows.
+   - `RePLace` : Performs global placement
+   - `Resizer` : Performs optional optimizations on the design
+   - `OpenPhySyn` : Performs timing optimizations on the design
+   - `OpenDP` : Perfroms detailed placement to legalize the globally placed components
 
 CTS :     
-   - TritonCTS : Synthesizes the clock distribution network
+   - `TritonCTS` : Synthesizes the clock distribution network
   
 Routing : 
-   - FastRoute : Performs global routing to generate a guide file for the detailed router
-   - TritonRoute : Performs detailed routing from global routing guides
-   - SPEF-Extractor : Performs SPEF extraction that include parasitic information
+   - `FastRoute` : Performs global routing to generate a guide file for the detailed router
+   - `TritonRoute` : Performs detailed routing from global routing guides
+   - `SPEF-Extractor` : Performs SPEF extraction that include parasitic information
       
 GDSII Generation :
-   - Magic : Streams out the final GDSII layout file from the routed def
+   - `Magic` : Streams out the final GDSII layout file from the routed def
   
 
 Checks :
-   - Magic : Performs DRC Checks & Antenna Checks
-   - Netgen : Performs LVS Checks
+   - `Magic` : Performs DRC Checks & Antenna Checks
+   - `Netgen` : Performs LVS Checks
       
 
 ## Lab-Work : 
 
+<a id="sky_pdk"></a>
+### SkyWater PDKs
+
+We are dealing with the Skywater PDK files listed under $PDK_ROOT. For the workshop, three subdirectories are required.
+
+![skywater PDK locations](/images/pdk_loc.png)
+
+Evidently, there are three pdks available that can be briefly explained as follows 
+- skywater pdk : Contains all the foundry provided PDK related files
+- open_pdks : Contains scripts that are used to bridge the gap between closed-source and open-source PDK to EDA tool compatibility
+- sky130A : The open-source compatible PDK files
+<br/>
+
+<a id="ini_ol"></a>
+### Initialising OpenLANE
+
+```
+./flow.tcl -interactive 
+```
+- The flow.tcl is the script which runs the OpenLANE flow.
+- OpenLANE can be run interactively or in autonomous mode, the `-interactive` switch allows openlane to run in interactive mode.
+
+![Open Lane Invoking](#/images/open_lane.png)
+<br/>
+
+<a id="im_pkg"></a>
+### Importing Package
+
+To operate OpenLANE, certain software dependencies are required. To add these to the OpenLANE tool, we must execute:
+
+```
+% package require openlane 0.9
+```
+
+![Import Package](/images/im_pkg.png)
+<br/>
+
+<a id="des_hier"></a>
+### Design Folder Hierarchy
+
+All designs run within OpenLANE are extracted from the `openlane/designs` folder. The design hierarchy in openlane is as follows : 
+
+![Design Hierarchy](/images/des_hier.png)
+
+
+Each design hierarchy comes with two distinct components:
+
+- Src folder : Contains verilog files and sdc constraint files
+- Config.tcl files : Design specific configuration switches used by OpenLANE
+
+An example of config.tcl is given as under :
+
+![config.tcl](/images/config_tcl.png)
+<br/>
+
 <a id="prep_des"></a>
-### Preperaing for Design
+### Preparing Design
 
-Running synthesis using : `run_synthesis`
+The command `prep` is used to generate file structure for our design. The entire command is executed as under :
 
-![](/images/run_synthesis)
+```
+% prep -design <design_name> 
+```
+The argument `-design` specifies the name of design folder. In our case, `<design_name>` is `picorv32a`.
+
+![Design Preparation](/images/design_prep.png)
+
+Due to running the prep command, in the `picorv32a/runs` path the results and report files is created.
+
+![Preparation Result](/images/prep_res.png)
+
+> [!IMPORTANT]
+> All of the OpenLANE parameters used for this particular run are contained in the `config.tcl` file displayed in this folder.
+
+Additionally, the information from the technology LEF and cell LEF is combined when the design is prepared in OpenLANE. Layer definitions and a set of constrained design guidelines required for PnR flow are contained in the LEF information. To reduce DRC errors during PnR flow, the cell LEF of each standard cell carries obstruction information:
+
+![Merged LEF](/images/lef_merge.png)
+<br/>
+
+<a id="run_syn"></a>
+### Running Synthesis
+
+Synthesis can be run using the command as under :
+```
+% run_synthesis
+```
+
+![Synthesis](/images/run_syn.png)
