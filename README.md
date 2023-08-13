@@ -83,7 +83,7 @@ I sincerely hope that anybody reading this discovers something new about physica
 
 Visit the link : https://github.com/nickson-jose/openlane_build_script for installation steps
 <br/>
-
+<br/>
 
 <a id="day1"></a>
 ## Day-1 : Inception of open-source EDA. OpenLANE and Sky130 PDK
@@ -172,22 +172,22 @@ In the workshop, a simplified version of this flow was introduced which is just 
 
 These steps can be briefly explained follows :
 
-- Sythesis : This is the first step in the basic flow. RTL created using any HDL (Verilog, VHDL) alongwith the design and environment constraints(reffered as SDC: Synopsys Design Constraint) are used in synthesis process to generate a synthesised *gate-level netlist*. This netlist demonstrates the logical conectivity of the RTL design. The following illustration shows a basic Sythesis from an RTL :
-
-![Synthesis Example](/images/flow_synth)
+- Sythesis : This is the first step in the basic flow. RTL created using any HDL (Verilog, VHDL) alongwith the design and environment constraints(reffered as SDC: Synopsys Design Constraint) are used in synthesis process to generate a synthesised *gate-level netlist*. This netlist demonstrates the logical conectivity of the RTL design.
+  >The following illustration shows a basic Sythesis from an RTL :
+  >> ![Synthesis Example](/images/flow_synth.png)
 
 - Floor Planning and Power Planning : FP/PP could differ in meaning depending on the scope of implementation on the design. Typically, the scope include:
     - Macro-level and,
     - Chip-level
 
-  The objective of FP/PP is to plan the silicon area and create robust power network to effeciently power the design. The Macro and Chip level floorplanning are briefly described as under :
-
-   ![Macro Floorplan](/images/macro_fp)
-   <br/>
-   ![Chip Floorplan](/images/chip_fp)
+  The objective of FP/PP is to plan the silicon area and create robust power network to efficiently power the design.
+  > The Macro and Chip level floorplanning are briefly described as under :
+  >> ![Macro Floorplan](/images/macro_fp.png)
+  >>
+  >> ![Chip Floorplan](/images/chip_fp.png)
   
     
-- Placement :
+- Placement : 
 - Clock-Tree Synthesis (CTS) :
 - Routing :
 - Signoff :
