@@ -189,10 +189,9 @@ These steps can be briefly explained follows :
   >> ![Chip Floorplan](/images/chip_fp.png)
 
   In power planning, the power network is constructed. Typically, a chip is powered by multiple Vdd and Vss pins. The power pins are connected to all components through power rings and horizontal/vertical straps.
+  > [!NOTE]
   > The parallel cross-sectional structure (as shown in figure below) is meant to reduce the resistance and ultimately minimise the IR drop and mitigate the electro-migration problem.
-  >> ![Power Planning](/images/power_plan)
-    
-  
+  >> ![Power Planning](/images/power_plan.png)
 <br/>
    
 - Placement : After the FP/PP stage comes the Placement stage. In this stage, the macro cells from the gate-level netlist are placed on the designed floorplan. The connected cells are placed close to each other to minimise *inter-connect* delay and to ensure effective post-placement optimization for easier routing.
@@ -224,18 +223,19 @@ These steps can be briefly explained follows :
   >> ###### *The second figure illustrates the metal layer structure as defined in Sky130 PDK.*
 
   > [!IMPORTANT]
-  > The sky130 PDK defines **six metal layers**, the bottomost layer made of *Titanium Nitride* is known as *Local Interconnect Layer*. The rest of the five layers are all composed of aluminium. 
+  > The sky130 PDK defines **six metal layers**, the bottomost layer made of *Titanium Nitride* is known as *Local Interconnect Layer*. The rest of the five layers are all composed of aluminium.
 
-
-
-
+  Most routers construct the metal-layer grid using metal tracks. Since, the metal-grids are usually large **Divide and Conquer** approach is used that can be explained as under. 
+  - Global Routing : In the global route phase of the physical design, simplified routes are used to estimate routing lengths, and the routing estimates are used to determine resistance and capacitance that are needed to compute wire delays.
+  - Final Routing : Uses the global routing guides to implement the actual wiring.
 <br/>
 
-- Signoff :
-
-
-
-
+- Signoff : After routing, comes the final sign-off stage. In this stage the final layout can be constructed which undergoes numerous verification that are as under :
+  - Physical Verification
+      - Design Rule Checks (DRC) : making sure that final layout follows the design rules
+      - Layout vs Schematic (LVS) : making sure that the final layout matches the initial gate-level netlist 
+  - Timing Verification
+      - Static Timing Analysis (STA) : To ensure that the final layout meets the timing constraints and all the paths are properly timed.
 <br/>
 
 <a id="ol_flow"></a>
