@@ -17,10 +17,10 @@
         - [OpenLANE flow](#ol_flow)
 
     - Lab work :
-        - Preparing for design
-        - Running Sythesis and reviewing generated files
-        - List of vital openLANE tool commands 
-        - Characterizing synthesis results
+        - [Preparing for design](#prep_des)
+        - [Running Synthesis and reviewing generated files](#run_synth)
+        - [List of vital openLANE tool commands](#ol_cmd) 
+        - [Characterizing synthesis results](#synth_res)
 
 5. [Day-2 : Floor-Planning and Introduction to Library Cells](#day2) 
     - Fundamentals Learned :
@@ -168,12 +168,25 @@ In an ASIC Design, the typical RTL-to-GDS2 flow is demonstrated in the illustrat
 
 In the workshop, a simplified version of this flow was introduced which is just enough to grasp the idea of the overall flow. This simplified flow is demonstrated below : 
 
-![RTL-to-GDS2_simplified_flow](/images/rtl_gsd2_sim_flow)
+![RTL-to-GDS2_simplified_flow](/images/rtl_gds2_sim_flow.png)
 
 These steps can be briefly explained follows :
 
-- Sythesis :
-- Floor Planning and Power Planning :
+- Sythesis : This is the first step in the basic flow. RTL created using any HDL (Verilog, VHDL) alongwith the design and environment constraints(reffered as SDC: Synopsys Design Constraint) are used in synthesis process to generate a synthesised *gate-level netlist*. This netlist demonstrates the logical conectivity of the RTL design. The following illustration shows a basic Sythesis from an RTL :
+
+![Synthesis Example](/images/flow_synth)
+
+- Floor Planning and Power Planning : FP/PP could differ in meaning depending on the scope of implementation on the design. Typically, the scope include:
+    - Macro-level and,
+    - Chip-level
+
+  The objective of FP/PP is to plan the silicon area and create robust power network to effeciently power the design. The Macro and Chip level floorplanning are briefly described as under :
+
+   ![Macro Floorplan](/images/macro_fp)
+   <br/>
+   ![Chip Floorplan](/images/chip_fp)
+  
+    
 - Placement :
 - Clock-Tree Synthesis (CTS) :
 - Routing :
@@ -221,5 +234,11 @@ Checks :
    - Netgen : Performs LVS Checks
       
 
+## Lab-Work : 
 
+<a id="prep_des"></a>
+### Preperaing for Design
 
+Running synthesis using : `run_synthesis`
+
+![](/images/run_synthesis)
