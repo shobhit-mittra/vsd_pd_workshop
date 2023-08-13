@@ -109,9 +109,17 @@ As it is evident in the illustration above, there lies an elaborate pathway for 
 
 The flow can be visualized in a better way via an example :
 > Let us take an instance of operating a basic Stop-Watch app.
->> Re-tracing the flow from the beginning the output of the OS could look domething like under : <br/>
->> ![o/p of OS eg]()
->> Moving onto the 
+>> Re-tracing the flow from the beginning the output of the OS could look something like under :
+>> 
+>> ![o/p of OS eg](/images/os_op_eg.png)
+>>
+>> ###### *A simple C-program capturing the behaviour of stop-watch app.*
+>> 
+>> The compiler processes this code to generate the instruction set specific to the chip being used. In this workshop we would be focusing on "picorv32a" core, hence the instruction set would follow the RISC-V Architecture. The illustration below showcases the sample generated compiler :
+>>
+>> ![compiler_op_eg]()
+>>
+>>    
     
 
 <a id="soc_ol"></a>
