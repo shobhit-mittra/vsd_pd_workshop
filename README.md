@@ -4,8 +4,6 @@
 ![](https://github.com/shobhit-mittra/vsd_pd_workshop/blob/main/images/cover_img_vsd.png?raw=true)
 
 
-
-
 ## Index 
 
 1. [Overview](#overview)
@@ -57,6 +55,7 @@
 9. Overall Experience 
 
 10. Acknowledgements 
+<br/>
 
 <a id="overview"></a>
 ## Overview
@@ -66,7 +65,7 @@ The workshop's goal is to provide fundamental knowledge about the ideas behind 
 This repository serves as an archive of all the knowledge I acquired and encountered during the session. I have utilised several snippets to demonstrate the ideas I gathered in the lectures and the outcomes of my lab module. The "images" branch compiles all of the illustrations used throughout in chronological order. 
 
 I sincerely hope that anybody reading this discovers something new about physical design and is inspired to explore more about the domain.
-  
+<br/>  
 
 <a id="pre_req"> </a>
 ## Pre-Requisites
@@ -77,11 +76,14 @@ I sincerely hope that anybody reading this discovers something new about physica
 
 ### Non-Technical :
 - Zeal to learn 
+<br/>
 
 <a id="inst"></a>
 ## Installation 
 
 Visit the link : https://github.com/nickson-jose/openlane_build_script for installation steps
+<br/>
+
 
 <a id="day1"></a>
 ## Day-1 : Inception of open-source EDA. OpenLANE and Sky130 PDK
@@ -118,20 +120,38 @@ The flow can be visualized in a better way via an example :
 >> The compiler processes this code to generate the instruction set specific to the chip being used. In this workshop we would be focusing on "picorv32a" core, hence the instruction set would follow the RISC-V Architecture. The illustration below showcases the sample generated compiler :
 >>
 >> ![compiler_op_eg](/images/compiler_op_eg.png)
+>>
 >> 
 >> The instruction set from compiler are then taken by the assembler to generate a machine language program that is interpreted by the chip.
 >>
->> ![assembler_op_eg]()
+>> ![assembler_op_eg](images/assembler_op_eg.png)
 >>
+>> 
 >> As observed in the snippet above, the assembler converts the sample instruction *"add x6,x10,x6"* (that essentially means adding the contents of registers *x6* and *x10* and putting the result into *x6* register) into an op-code that can be implemented by the hardware.
->>
-> [!NOTE]
-> From this basic example discussed above, it is clear that the *Instruction-Set* acts as an interface between the communication of hardware and software and hence it is also termed as *Abstract Interface*.
-    
+
+
+> [!NOTE] 
+> From this basic example discussed above, it is clear that the *Instruction-Set* acts as an interface between the communication of hardware and software and hence it is also termed as **Abstract Interface**.
+<br/>
 
 <a id="soc_ol"></a>
-### SoC using OpenLANE : 
+### SoC using OpenSource Tools : 
 
+A basic System-On-Chip (commany reffered as SoC) serves as the heart to most of the intricate electronic systems. The components required to create a SoC can be visualised via the image below : 
+
+![SoC Requirements](/images/)
+
+These three fundamental components : **RTL IP's**, **EDA Tools** and **PDK Data** are vital for SoC develpoment. These industry-standard components aren't readily available to the masses and hence it has been a challenge to get hands-on experience on the VLSI flow. Fortunately, the open-source version of these components are available on the internet that can be used to bridge the gap between academic learning and industry-level work. 
+
+Before exploring the open-source realm of VLSI, we need to develop a basic insight on the three components mentioned above. 
+- RTL IP (Register-Transfer Level Intellectual Property) : It refers to pre-designed and verified digital circuit components or modules that are described at the register transfer level (RTL) abstraction in the form of IPs. These components are ready to be integrated into larger digital designs.
+- EDA Tools (Electronic Design Automation Tools) : These CAD tools are basically used to automate the processes involved in the VLSI flow. Automation allows easier fault detection and debugging, improved collaboration and faster fabrication.
+-  PDK (Process Design Kit) : These are extremely crucial elements in any digital design. These basically act as an interface between FAB and designers. Collection of files used to model fabrication process for EDA tools used to design IC. Includes (not limited to ) :
+      - Process Design Rules : LVS, DRC
+      - Standard Cell Libraries
+      - Delay Information
+      - I/O Libraries
+      - and so on ...
 
 
 
