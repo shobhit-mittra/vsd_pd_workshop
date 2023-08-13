@@ -12,7 +12,7 @@
 4. [Day-1 : Inception of open-source EDA. OpenLANE and Sky130 PDK](#day1)
     - Fundamentals Learned :
         - [Exploring the Software-Hardware coupling](#hw-sw) 
-        - [SoC using OpenLANE](#soc_ol)
+        - [SoC using Open-Source Tools](#soc_os)
         - [Introduction to RTL-to-GDS2 flow](#rtl_gds2) 
         - [OpenLANE flow](#ol_flow)
 
@@ -130,16 +130,16 @@ The flow can be visualized in a better way via an example :
 >> As observed in the snippet above, the assembler converts the sample instruction *"add x6,x10,x6"* (that essentially means adding the contents of registers *x6* and *x10* and putting the result into *x6* register) into an op-code that can be implemented by the hardware.
 
 
-> [!NOTE] 
+> [!IMPORTANT] 
 > From this basic example discussed above, it is clear that the *Instruction-Set* acts as an interface between the communication of hardware and software and hence it is also termed as **Abstract Interface**.
 <br/>
 
-<a id="soc_ol"></a>
+<a id="soc_os"></a>
 ### SoC using OpenSource Tools : 
 
-A basic System-On-Chip (commany reffered as SoC) serves as the heart to most of the intricate electronic systems. The components required to create a SoC can be visualised via the image below : 
+A basic System-On-Chip (commany reffered as SoC) serves as the heart to most of the intricate electronic systems. The components required to create an ASIC can be visualised via the image below : 
 
-![SoC Requirements](/images/)
+![ASIC Requirements](/images/digital_asic_design_req.png)
 
 These three fundamental components : **RTL IP's**, **EDA Tools** and **PDK Data** are vital for SoC develpoment. These industry-standard components aren't readily available to the masses and hence it has been a challenge to get hands-on experience on the VLSI flow. Fortunately, the open-source version of these components are available on the internet that can be used to bridge the gap between academic learning and industry-level work. 
 
@@ -153,10 +153,18 @@ Before exploring the open-source realm of VLSI, we need to develop a basic insig
       - I/O Libraries
       - and so on ...
 
+The process of experiencing the ASIC designing is easier than ever due to the components becoming Open-Source. The illustration below shocases the various open-source platforms available. We will primarily discuss on a specific flow : **OpenLANE** which uses an array of Open-Source tools to automate the design flow, later on in this segment.
 
+![Open-Source ASIC](/images/asic_open_src.png)
+
+<br/>
 
 <a id="rtl_gds2"></a>
 ### Introduction to RTL-to-GDS2 flow : 
+
+In an ASIC Design, the RTL-to-GDS2 flow is demonstrated in the illustration below : 
+
+![RTL-to-GDS2 flow](/images/)
 
 
 
