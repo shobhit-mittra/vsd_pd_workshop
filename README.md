@@ -24,7 +24,7 @@
         - List of vital openLANE tool commands 
         - Characterizing synthesis results
 
-5. Day-2 : Floor-Planning and Introduction to Library Cells 
+5. [Day-2 : Floor-Planning and Introduction to Library Cells](#day2) 
     - Fundamentals Learned :
         - con 1 
         - con 2
@@ -117,9 +117,16 @@ The flow can be visualized in a better way via an example :
 >> 
 >> The compiler processes this code to generate the instruction set specific to the chip being used. In this workshop we would be focusing on "picorv32a" core, hence the instruction set would follow the RISC-V Architecture. The illustration below showcases the sample generated compiler :
 >>
->> ![compiler_op_eg]()
+>> ![compiler_op_eg](/images/compiler_op_eg.png)
+>> 
+>> The instruction set from compiler are then taken by the assembler to generate a machine language program that is interpreted by the chip.
 >>
->>    
+>> ![assembler_op_eg]()
+>>
+>> As observed in the snippet above, the assembler converts the sample instruction *"add x6,x10,x6"* (that essentially means adding the contents of registers *x6* and *x10* and putting the result into *x6* register) into an op-code that can be implemented by the hardware.
+>>
+> [!NOTE]
+> From this basic example discussed above, it is clear that the *Instruction-Set* acts as an interface between the communication of hardware and software and hence it is also termed as *Abstract Interface*.
     
 
 <a id="soc_ol"></a>
