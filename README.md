@@ -187,6 +187,12 @@ These steps can be briefly explained follows :
   >> ![Macro Floorplan](/images/macro_fp.png)
   >>
   >> ![Chip Floorplan](/images/chip_fp.png)
+
+  In power planning, the power network is constructed. Typically, a chip is powered by multiple Vdd and Vss pins. The power pins are connected to all components through power rings and horizontal/vertical straps.
+  > The parallel cross-sectional structure (as shown in figure below) is meant to reduce the resistance and ultimately minimise the IR drop and mitigate the electro-migration problem.
+  >> ![Power Planning](/images/power_plan)
+    
+  
 <br/>
    
 - Placement : After the FP/PP stage comes the Placement stage. In this stage, the macro cells from the gate-level netlist are placed on the designed floorplan. The connected cells are placed close to each other to minimise *inter-connect* delay and to ensure effective post-placement optimization for easier routing.
@@ -195,11 +201,8 @@ These steps can be briefly explained follows :
   >> ![Placement Example](/images/placement_intro.png)
   >> ###### *In this example the macro-cells of simple gate-level netlist containing inverter,nand gate, or gate and d-flip flop are placed close to each other in the floor plan.*
 
-  Placement is typically done in two steps, namely
-  - Global Placement
-  - Detailed Placement
-<br/>
-
+  Placement is typically done in two steps, namely **Global** and **Detailed** routing.
+  
   > These two placement methods can be briefly explained as under :
   >> ![Placement Types](/images/placement_types.png)
   >> ###### *The first image shows the global placement and the second shows detailed placement.*
@@ -211,13 +214,13 @@ These steps can be briefly explained follows :
 - Clock-Tree Synthesis (CTS) : Before proceeding to routing, we need to perform the CTS on the post-placement layout. The clock needs to reach multiple cells in the layout hence, to maintain the signal integrity it needs to go through stages of buffers and repeaters. This calls for an organized network to distribute the clock across the layout. This network is known as the Clock Tree.
 
   > The illustration below summarizes the CTS stage
-  >> ![Clock Tree Synthesis summary](/images/cts.)
+  >> ![Clock Tree Synthesis summary](/images/cts.png)
 <br/>
 
 - Routing : After CTS stage, we are required to do the Routing. It involves connecting the placed macro cells for signal propagation via nets. Given placements and fixed number of metal layers, the router tools is expected to find a valid pattern of horizontal and vertical wires to implement the nets. The metal layer information is extracted by the PDK that contains the parameters such as pitch, number of tracks, thickness, minimum width, vias etc.
 
   > Routing in *sky130 PDK* is shown as under :
-  >> ![Routing in sky130 PDK](/images/routing.)
+  >> ![Routing in sky130 PDK](/images/routing.png)
   >> ###### *The second figure illustrates the metal layer structure as defined in Sky130 PDK.*
 
   > [!IMPORTANT]
