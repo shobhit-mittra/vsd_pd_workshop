@@ -8,10 +8,10 @@
 
 ## Index 
 
-1. Overview
-2. Pre-Requisites 
-3. Installation
-4. Day-1 : Inception of open-source EDA. OpenLANE and Sky130 PDK
+1. [Overview](#overview)
+2. [Pre-Requisites](#pre_req) 
+3. [Installation](#inst)
+4. [Day-1 : Inception of open-source EDA. OpenLANE and Sky130 PDK](#day1)
     - Fundamentals Learned :
         - Exploring the Software-Hardware coupling 
         - SoC using OpenLANE
@@ -58,10 +58,17 @@
 
 10. Acknowledgements 
 
+<a id="overview"></a>
 ## Overview
 
-The workshop's objective is to   
+The workshop's goal is to provide fundamental knowledge about the ideas behind the Physical Design flow, an important part of the fundamental VLSI flow. Physical Design is broad topic and would require years to come close to mastering. Yet workshop attempts to convey the principles in a concise manner that is just enough to begin working on actual designs. The program is incredibly insightful and intriguing due to the way that concepts are coupled with the practical experience obtained through lab modules. 
 
+This repository serves as an archive of all the knowledge I acquired and encountered during the session. I have utilised several snippets to demonstrate the ideas I gathered in the lectures and the outcomes of my lab module. The "images" branch compiles all of the illustrations used throughout in chronological order. 
+
+I sincerely hope that anybody reading this discovers something new about physical design and is inspired to explore more about the domain.
+  
+
+<a id="pre_req"> </a>
 ## Pre-Requisites
 
 ### Technical :
@@ -71,17 +78,21 @@ The workshop's objective is to
 ### Non-Technical :
 - Zeal to learn 
 
+<a id="inst"></a>
 ## Installation 
 
 Visit the link : https://github.com/nickson-jose/openlane_build_script for installation steps
 
-
+<a id="day1"></a>
 ## Day-1 : Inception of open-source EDA. OpenLANE and Sky130 PDK
 
 The workshop's primary goal on the first day was to familiarise us with the foundational ideologies outlined below in order to lay the groundwork for the days to come.
 
 ### Exploring the Software-Hardware coupling :
 
+The most commonly used application software or apps such as Microsoft Word, Excel, Powerpoint etc. run on a system i.e the hardware which is essentially a combination of multiple components making up the chip. Hene there exists an elaborate pathway that ensues the communication between the hardaware and the software applications. The illustration below showcases the hardware-software coupling : 
+
+![Hardware-Software Coupling]()
 
 
 
