@@ -441,7 +441,7 @@ Floorplan can be run using the command :
 % run_floorplan
 ```
 
-![Floor plan run](run_floorplan.png)
+![Floor plan run](/images/run_floorplan.png)
 
 We can view the results of floorplan in the directory :
 
