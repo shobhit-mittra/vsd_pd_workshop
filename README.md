@@ -27,17 +27,12 @@
           
 
 5. [Day-2 : Floor-Planning and Introduction to Library Cells](#day2) 
-     - Fundamentals Learned :
-        - con 1 
-        - con 2
-        - concept 3 
-        - concept 4
-
     - Lab work :
-        - act1
-        - act 2
-        - act 3
-        - act 4
+        - [Viewing Floorplan and Placement Variables](#fp_pl)
+        - [Running Floorplan](#run_fp)
+        - [Invoking Magic to view generated Floorplan](#magic_fp)
+        - [Running Placement and viewing it on magic](#magic_pl)
+    
 
 6. Day-3 : Designing Library Cells using magic and ngspice tools
     - Fundamentals Learned :
@@ -412,6 +407,95 @@ The above commands can also be written in a file and passed to `flow.tcl`:
 <a id="day2"></a>
 ## Day-2 : Floor-Planning and Introduction to Library Cells :
 
+- In Floorplanning we typically set the:
 
+1. Die Area
+2. Core Area
+3. Core Utilization
+4. Aspect Ratio
+5. Place Macros
+6. Power distribution network (Normally done here but done later in OpenLANE)
+7. Place input and output pins
 
-  
+<a id="fp_pl"></a>
+### Viewing Floorplan and Placement Variables :
+
+![Configuration Directory](/images/readme_loc.png)
+
+The Floorplan and Placement variables can be seen below :
+
+![Floor Plan Variables](/images/floorplan_vars.png)
+
+![Placement Variables](/images/placement_vars.png)
+
+The Floorplan defaults are as under :
+
+![Floor Plan Defaults](/images/floorplan_defaults.png)
+<br/>
+
+<a id="run_fp"></a>
+### Running Floorplan :
+
+Floorplan can be run using the command :
+```
+% run_floorplan
+```
+
+![Floor plan run](run_floorplan.png)
+
+We can view the results of floorplan in the directory :
+
+![Floor Plan results](/images/post_fp_results.png)
+
+The generated `floorplan.def` is as under :
+
+![Floor plan.def](/images/fp_def.png)
+<br/>
+
+<a id="magic_fp"></a>
+### Invoking Magic to view generated Floorplan :
+
+In order to view the floorplan on magic, we need to locate the following components as an input to the `magic` tool :
+
+1. Magic technology file (sky130A.tech)
+2. Def file of floorplan
+3. Merged LEF file
+
+Use the command :
+```
+> magic -T <path_tech_lef_for_magic> <path_to_merged_lef> <floorplan.def>
+```
+> [!NOTE]
+> For reference : In the code above, `<path_tech_lef_for_magic>` is used as `here` ; `<path_to_merged_lef>` is used as `here` ; `<floorplan.def>` is used as `here`.
+
+![Initializing magic tool](/images/ini_magic.png)
+
+The magic tool shows the following floorplan : 
+
+![Magic Floorplan](/images/magic_fp.png)
+<br/>
+
+<a id="magic_pl"></a>
+### Running Placement and viewing it on magic :
+
+Placement can be run using the command : 
+```
+% run_placement
+```
+
+The results are populated on the `results/placement` directory and the `magic` tool can be used to investigate the result of placement stage, in a fashon similar to floorplan stage. The command used is :
+```
+> magic -T 
+```
+
+The result of placement stage as constructed by the `magic` tool can be seen below :
+
+![Placement Magic](/images/magic_placement.png)
+
+The post placement analytics are as under :
+
+![Design Stats](/images/design_stats_placement.png)
+
+![Placement Analysis](/images/placement_analysis.png)
+
+<br/>
