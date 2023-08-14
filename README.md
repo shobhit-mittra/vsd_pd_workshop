@@ -27,7 +27,7 @@
           
 
 5. [Day-2 : Floor-Planning and Introduction to Library Cells](#day2) 
-    - Fundamentals Learned :
+     - Fundamentals Learned :
         - con 1 
         - con 2
         - concept 3 
@@ -375,9 +375,9 @@ Synthesis can be run using the command as under :
 > Minor Task provided in the lab : 
 >> To find out the ratio of *flop-ratio* i.e number of d-flip-flops to number of cells. For the run we have :
 >> ![Number of cells](/images/num_cells.png)
->> ###### *In the snippet above, the number of cells are 14,876*
+>> ###### *In the snippet above, the total number of cells are 14,876*
 >> ![Numer of D-Flops](/images/num_dff.png)
->> ###### *In the snippet above, the number of cells are 1,613*
+>> ###### *In the snippet above, the number of d-flops are 1,613*
 >>
 >> Hence, the `flop-ratio` comes out to be **0.1084**.
 <br/>
