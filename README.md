@@ -195,7 +195,8 @@ These steps can be briefly explained follows :
   In power planning, the power network is constructed. Typically, a chip is powered by multiple Vdd and Vss pins. The power pins are connected to all components through power rings and horizontal/vertical straps.
   > [!NOTE]
   > The parallel cross-sectional structure (as shown in figure below) is meant to reduce the resistance and ultimately minimise the IR drop and mitigate the electro-migration problem.
-  > ![Power Planning](/images/power_plan.png)
+  
+  ![Power Planning](/images/power_plan.png)
 <br/>
    
 - Placement : After the FP/PP stage comes the Placement stage. In this stage, the macro cells from the gate-level netlist are placed on the designed floorplan. The connected cells are placed close to each other to minimise *inter-connect* delay and to ensure effective post-placement optimization for easier routing.
