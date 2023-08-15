@@ -643,7 +643,7 @@ Now, copy the generated `sky130_inv.lef` file to the `src` directory in designs 
 
 ![](/images/cp_to_src.png)
 
-Additionally, copy the libraries : `fast.lib`, `slow.lib`, `typical.lib` from the `libs` directory in the `vsdcelldesign` directory to `src` directory as well.
+Additionally, copy the libraries : `sky130_fd_sc_hd__fast.lib`, `sky130_fd_sc_hd__slow.lib`, `sky130_fd_sc_hd__typical.lib` from the `libs` directory in the `vsdcelldesign` directory to `src` directory as well.
 
 ![](/images/cp_libs_to_src.png)
 
