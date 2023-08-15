@@ -313,7 +313,7 @@ Evidently, there are three pdks available that can be briefly explained as follo
 To operate OpenLANE, certain software dependencies are required. To add these to the OpenLANE tool, we must execute:
 
 ```
-% package require openlane 0.9
+package require openlane 0.9
 ```
 
 ![Import Package](/images/im_pkg.png)
@@ -343,7 +343,7 @@ An example of config.tcl is given as under :
 The command `prep` is used to generate file structure for our design. The entire command is executed as under :
 
 ```
-% prep -design <design_name> 
+prep -design <design_name> 
 ```
 The argument `-design` specifies the name of design folder. In our case, `<design_name>` is `picorv32a`.
 
@@ -366,7 +366,7 @@ Additionally, the information from the technology LEF and cell LEF is combined w
 
 Synthesis can be run using the command as under :
 ```
-% run_synthesis
+run_synthesis
 ```
 
 > Minor Task provided in the lab : 
@@ -439,7 +439,7 @@ The Floorplan defaults are as under :
 
 Floorplan can be run using the command :
 ```
-% run_floorplan
+run_floorplan
 ```
 
 ![Floor plan run](/images/run_floorplan.png)
@@ -464,7 +464,7 @@ In order to view the floorplan on magic, we need to locate the following compone
 
 Use the command :
 ```
-> magic -T <path_tech_lef_for_magic> lef read <path_to_merged_lef> def read <floorplan.def>
+magic -T <path_tech_lef_for_magic> lef read <path_to_merged_lef> def read <floorplan.def>
 ```
 > [!NOTE]
 > For reference : In the code above, `<path_tech_lef_for_magic>` is used as `/home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic
@@ -482,12 +482,12 @@ The magic tool shows the following floorplan :
 
 Placement can be run using the command : 
 ```
-% run_placement
+run_placement
 ```
 
 The results are populated on the `results/placement` directory and the `magic` tool can be used to investigate the result of placement stage, in a fashon similar to floorplan stage. The command used is :
 ```
-> magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def  
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def  
 ```
 
 The result of placement stage as constructed by the `magic` tool can be seen below :
@@ -515,7 +515,7 @@ The cmos inverter files are provided in the *git-hub* repositry : https://github
 
 Use the command below, to clone the files present in the repositry into your working machine :
 ```
-> git clone https://github.com/nickson-jose/vsdstdcelldesign
+git clone https://github.com/nickson-jose/vsdstdcelldesign
 ```
 > [!NOTE]
 > It is important that your virtual machine has git installed in it to run the command above. In case it isn't installed please run the following command before running the previous command :
@@ -531,7 +531,7 @@ It is recommended to clone the repositry in the main `openlane` directory.
 
 Using the command as under, the magic tool can be invoked and the inverter layout can be examined. 
 ```
-> magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech sky130_inv.mag
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech sky130_inv.mag
 ```
 
 ![Initialize Magic to examine CMOS-inv layout](/images/ini_magic_vsdcell.png)
@@ -591,7 +591,7 @@ The spice file generated needs some changes for proper sourcing in the ngspice t
 
 After updating the spice deck, we are set to source the updated spice file into the ngspice tool. Use the following command to invoke ngpsice :
 ```
-> ngspice sky130_inv.spice
+ngspice sky130_inv.spice
 ```
 > [!NOTE]
 > In case ngspice is not installed in your machine, please run the command shown to install ngspice :
@@ -666,7 +666,7 @@ Now, we are set to invoke the openlane docker and start the flow. The initial st
 The command `prep -design` will require certain changes. Our goal here is to overwrite the existing files present in the `runs` , from the latest run `13-08_20-12` in my case, that would be generated during the openLANE flow. The altered command used is as under :
 
 ```
-% prep -design picorv32a -tag 13-08_20-12 -overwrite
+prep -design picorv32a -tag 13-08_20-12 -overwrite
 ```
 
 ![](/images/overwrite.png)
@@ -678,6 +678,10 @@ The command `prep -design` will require certain changes. Our goal here is to ove
 ![](/images/prep_resolved.png)
 
 There is also a necessity of running the commands listed below in order to include the lef files in the openLANE flow.
+```
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+```
 
 ![](/images/additional_cmds.png)
 
@@ -695,7 +699,7 @@ Now, run floorplan using the command `run_floorplan` followed by placement using
 
 Invoke the magic tool to view the placement ready layout using the command below :
 ```
-> magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def  
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def  
 ```
 
 Look thoroughly for the cell `sky130_vsdinv`. After locating the cell, hover your cursor over it and press `s` to select it. Now, type `pwd` in the *tkcon* terminal followed by `expand` command to properly view the placed cell.
