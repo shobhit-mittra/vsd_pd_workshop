@@ -47,7 +47,7 @@
     - Lab work :
         - [Updating the inverter cell](#upd_inv)
         - [Generate LEF file](#gen_lef)
-        - [](#)
+        - [Preparing and Running OpenLANE flow](#prep_ol)
       
 
 9. Day-5 : Final stages of RTL-to-GDS2 flow and closure 
@@ -650,6 +650,57 @@ Additionally, copy the libraries : `sky130_fd_sc_hd__fast.lib`, `sky130_fd_sc_hd
 Check the `src` directory and make sure that all the required files above are coppied successfully. 
 
 ![](/images/cp_libs_to_src_success.png)
+<br/>
+
+<a id="prep_ol"></a>
+### Preparing and Running OpenLANE flow :
+
+Before running the openlane flow, we need to incorporate some modifications in the `config.tcl` file that is present in the `openlane` directory.
+
+![](/images/update_config_tcl.png)
+
+Now, we are set to invoke the openlane docker and start the flow. The initial steps of starting the flow remain the same.
+> [!NOTE]
+> Please refer to [Day-1 Labs](#ini_ol) to revisit the initialization steps for OpenLANE
+
+The command `prep -design` will require certain changes. Our goal here is to overwrite the existing files present in the `runs` , from the latest run `13-08_20-12` in my case, that would be generated during the openLANE flow. The altered command used is as under :
+
+```
+% prep -design picorv32a -tag 13-08_20-12 -overwrite
+```
+
+![](/images/overwrite.png)
+
+> [!NOTE]
+> If encountered by the above error, try to update the `LIB_MIN` and `LIB_MAX` in the `config.tcl` variables to `LIB_FASTEST` and `LIB_SLOWEST` respectively.
+> Re-run the openlane and run the prep -design command.
+
+![](/images/prep_resolved.png)
+
+There is also a necessity of running the commands listed below in order to include the lef files in the openLANE flow.
+
+![](/images/additional_cmds.png)
+
+Finally, wr are all set to run synthesis via `run_synthesis` command.
+
+![](/images/run_synthesis2.png)
+
+Make the modifications in the flow as showm below to select a balanced area-delay synthesis strategy :
+
+![](/images/modif_echo.png)
+
+Now, run floorplan using the command `run_floorplan` followed by placement using `run_placement` which will place the updated inverter cell in the floorplan. Check the `results/placement` directory in the `runs/13-08_20-12` directory for the generated `def` file.
+
+![](/images/updated_def.png)
+
+Invoke the magic tool to view the placement ready layout using the command below :
+```
+> magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def  
+```
+
+Look thoroughly for the cell `sky130_vsdinv`. After locating the cell, hover your cursor over it and press `s` to select it. Now, type `pwd` in the *tkcon* terminal followed by `expand` command to properly view the placed cell.
+
+![](/images/placed_inv.png)
 
 
 
