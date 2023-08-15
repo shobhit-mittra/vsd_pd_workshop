@@ -34,18 +34,14 @@
         - [Running Placement and viewing it on magic](#magic_pl)
     
 
-6. Day-3 : Designing Library Cells using magic and ngspice tools
-    - Fundamentals Learned :
-        - con 1 
-        - con 2
-        - concept 3 
-        - concept 4
-
+6. [Day-3 : Designing Library Cells using magic and ngspice tools](#day3) :
     - Lab work :
-        - act1
-        - act 2
-        - act 3
-        - act 4
+        - [Importing CMOS-Inveter Files](#import_inv)
+        - [Inspecting CMOS-Inverter layout on magic](#magic_inv)
+        - [Design Inference](#des_inf)
+        - [Extracting SPICE from layout](#ext_spice)
+        - [Updating SPICE Deck](#upd_spice)
+        - [Running Updated SPICE on ngspice](#ngspice_inv)
 
 7. Day-4 : Pre-Layout Timing Analysis
 
@@ -500,3 +496,116 @@ The post placement analytics are as under :
 ![Placement Analysis](/images/placement_analysis.png)
 
 <br/>
+
+<a id="day3"></a>
+## Day-3 : Designing Library Cells using magic and ngspice tools 
+
+<!--Thory here-->
+
+
+<a id="import_inv"></a>
+### Importing CMOS-Inveter Files :
+
+The cmos inverter files are provided in the *git-hub* repositry : https://github.com/nickson-jose/vsdstdcelldesign.
+
+Use the command below, to clone the files present in the repositry into your working machine :
+```
+> git clone https://github.com/nickson-jose/vsdstdcelldesign
+```
+> [!NOTE]
+> It is important that your virtual machine has git installed in it to run the command above. In case it isn't installed please run the following command before running the previous command :
+> ``` sudo apt-get install git ```
+
+It is recommended to clone the repositry in the main `openlane` directory. 
+
+![Clonned Files result](/images/vsdstd_cell_file.png)
+<br/>
+
+<a id="magic_inv"></a>
+### Inspecting CMOS-Inverter layout on magic :
+
+Using the command as under, the magic tool can be invoked and the inverter layout can be examined. 
+```
+> magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech sky130_inv.mag
+```
+
+![Initialize Magic to examine CMOS-inv layout](/images/ini_magic_vsdcell.png)
+
+
+The magic layout comes out as under :
+
+![Magic Layout Inv cell](/images/magic_invcell.png)
+<br/>
+
+<a id="des_inf"></a>
+### Design Inference :
+
+Select the specific layer/device by hovering over the object and pressing, `s`, iteratively, until you traverse the hierarchy to the specified object:
+
+![Inverter Cell](/images/dev_inf.png)
+ 
+Next, on the *tkcon* terminal type `what` to reveal the selected object on the layout.
+
+![Tkcon PMOS](/images/tkcon_pmos.png)
+
+Additionally, **DRC-errors** can also be viewed using the tkcon terminal. 
+
+![DRC error in tkcon](images/drc_error_check.png)
+<br/>
+
+<a id="ext_spice"></a>
+### Extracting SPICE from layout :
+
+To extract the parasitic spice file for the associated layout one needs to create an extraction file using the command `extract all`:
+
+![Extraction File cmd](/images/tkcon_extract.png)
+
+![Extracted File](/images/inv_extraction_file.png)
+
+After generating the extracted file we need to output the .ext file to a spice file:
+
+![Extract to Spice](/images/tkcon_ext2spice.png)
+
+The created SPICE file can be seen in the `vsdcelldesign` directory 
+
+![Spice Created in Dir](/images/spice_created.png)
+
+![Spice img](/images/inv_spice_file.png)
+<br/>
+
+<a id="upd_spice"></a>
+### Updating SPICE Deck :
+
+The spice file generated needs some changes for proper sourcing in the ngspice tool, The updates are mentioned in the snippet as follows :
+
+![Updated SPICE](/images/update_spice.png)
+<br/>
+
+<a id="ngspice_inv"></a>
+### Running Updated SPICE on ngspice :
+
+After updating the spice deck, we are set to source the updated spice file into the ngspice tool. Use the following command to invoke ngpsice :
+```
+> ngspice sky130_inv.spice
+```
+> [!NOTE]
+> In case ngspice is not installed in your machine, please run the command shown to install ngspice :
+> ```sudo apt install ngspice```
+
+![ngspice run](/images/ngspice_run.png)
+
+Use the command `plot y vs time a` to plot a graph.
+
+![ngspice sim](/images/ngspice_sim.png)
+<br/>
+
+<a id="day4"></a>
+## Day-4 : Pre-Layout Timing Analysis
+
+
+
+
+
+
+
+
