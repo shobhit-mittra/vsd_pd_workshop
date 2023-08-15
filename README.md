@@ -43,13 +43,18 @@
         - [Updating SPICE Deck](#upd_spice)
         - [Running Updated SPICE on ngspice](#ngspice_inv)
 
-7. Day-4 : Pre-Layout Timing Analysis
+7. [Day-4 : Pre-Layout Timing Analysis](#day4)
+    - Lab work :
+        - [Updating the inverter cell](#upd_inv)
+        - [](#)
+        - [](#)
+      
 
-8. Day-5 : Final stages of RTL-to-GDS2 flow and closure 
+9. Day-5 : Final stages of RTL-to-GDS2 flow and closure 
 
-9. Overall Experience 
+10. Overall Experience 
 
-10. Acknowledgements 
+11. Acknowledgements 
 <br/>
 
 <a id="overview"></a>
@@ -601,6 +606,27 @@ Use the command `plot y vs time a` to plot a graph.
 
 <a id="day4"></a>
 ## Day-4 : Pre-Layout Timing Analysis
+
+For the purpose of to perform place and routing (PnR), an abstract view of the GDS files produced by Magic is used. Information on metal and pins will be included in the abstract. Along with routing guides produced from the PnR flow, the PnR tool will do interconnect routing using the abstract view information, formally known as LEF information.
+
+<a id="upd_inv"></a>
+### Updating the inverter cell :
+
+The tracks.info file is used to check where the routing will happen in the metal layer.
+
+![Tracks.info file](/images/tracks_info.png)
+
+Utilising the TCKON terminal in accordance with the tracks, update the grid in the MAGIC tool.info intel. Also, to update the width of the standard cell. Should be odd multiple of x pitch.
+
+![](/images/grid_chg.png)
+
+Ensure that the grid intersection is present on the input(A) and the output(Y) layout blocks :
+![](/images/intersection_check.png)
+
+Save this magic layout file using a custom name `sky130_vsdinv` and see if the changes are saved.
+
+![](/images/updated_name_mag.png)
+
 
 
 
