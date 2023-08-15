@@ -46,7 +46,7 @@
 7. [Day-4 : Pre-Layout Timing Analysis](#day4)
     - Lab work :
         - [Updating the inverter cell](#upd_inv)
-        - [](#)
+        - [Generate LEF file](#gen_lef)
         - [](#)
       
 
@@ -626,8 +626,30 @@ Ensure that the grid intersection is present on the input(A) and the output(Y) l
 Save this magic layout file using a custom name `sky130_vsdinv` and see if the changes are saved.
 
 ![](/images/updated_name_mag.png)
+<br/>
 
+<a id="gen_lef"></a>
+### Generate LEF file :
 
+Finally, we use the command `lef write` on the *tkcon* terminal to generate a `lef` file of the inverter layout that will be used in the openlane flow to plug the inverter cell in the current floorplan.
+
+![](/images/lef_write.png)
+
+The lef file is generated in the `vsdcelldesign` directory.
+
+![](/images/lef_generated.png)
+
+Now, copy the generated `sky130_inv.lef` file to the `src` directory in designs `picorv32a` directory.
+
+![](/images/cp_to_src.png)
+
+Additionally, copy the libraries : `fast.lib`, `slow.lib`, `typical.lib` from the `libs` directory in the `vsdcelldesign` directory to `src` directory as well.
+
+![](/images/cp_libs_to_src.png)
+
+Check the `src` directory and make sure that all the required files above are coppied successfully. 
+
+![](/images/cp_libs_to_src_success.png)
 
 
 
