@@ -463,10 +463,11 @@ In order to view the floorplan on magic, we need to locate the following compone
 
 Use the command :
 ```
-> magic -T <path_tech_lef_for_magic> <path_to_merged_lef> <floorplan.def>
+> magic -T <path_tech_lef_for_magic> lef read <path_to_merged_lef> def read <floorplan.def>
 ```
 > [!NOTE]
-> For reference : In the code above, `<path_tech_lef_for_magic>` is used as `here` ; `<path_to_merged_lef>` is used as `here` ; `<floorplan.def>` is used as `here`.
+> For reference : In the code above, `<path_tech_lef_for_magic>` is used as `/home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic
+` ; `<path_to_merged_lef>` is used as `../../tmp/merged.lef` ; `<floorplan.def>` is used as `picorv32a.floorplan.def`.
 
 ![Initializing magic tool](/images/ini_magic.png)
 
@@ -485,7 +486,7 @@ Placement can be run using the command :
 
 The results are populated on the `results/placement` directory and the `magic` tool can be used to investigate the result of placement stage, in a fashon similar to floorplan stage. The command used is :
 ```
-> magic -T 
+> magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def  
 ```
 
 The result of placement stage as constructed by the `magic` tool can be seen below :
