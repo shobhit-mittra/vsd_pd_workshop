@@ -48,6 +48,7 @@
         - [Updating the inverter cell](#upd_inv)
         - [Generate LEF file](#gen_lef)
         - [Preparing and Running OpenLANE flow](#prep_ol)
+        - [Slack fixing and Pre-Layout STA](#pre_sta)
       
 
 9. Day-5 : Final stages of RTL-to-GDS2 flow and closure 
@@ -707,6 +708,10 @@ Look thoroughly for the cell `sky130_vsdinv`. After locating the cell, hover you
 ![](/images/placed_inv.png)
 
 
+<a id="pre_sta"></a>
+### Slack fixing and Pre-Layout STA :
+
+After successfull placement of our custom inverter cell in the floorplan layout, we embark on the path to optimize the timing performance of the overall design. This opens the gates to Static Timing Analysis which will be done by the `openSTA` tool.  
 
 
 
