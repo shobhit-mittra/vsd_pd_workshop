@@ -716,7 +716,11 @@ After successful placement of our custom inverter cell in the floorplan layout, 
 Before proceeding to use `openSTA` for timing analysis, we require to make some modifications in the `base.sdc` file that is present in the <enter-path> directory. Appending the modifications, the `base.sdc` file is renamed as `my_base.sdc` and is copied to the `src` files in the `picorv32a` design directory.
 The additional constraints that were appended to `base.sdc` are mentioned below.
 ```
-<extra_constraints here>
+set ::env(CLOCK_PORT) clk
+set ::env(CLOCK_PERIOD) 12.000
+set ::env(SYNTH_DRIVING_CELL) sky130_fd_sc_hd__inv_8
+set ::env(SYNTH_DRIVING_CELL_PIN) Y
+set ::env(SYNTH_CAP_LOAD) 17.65
 
 ```
 
