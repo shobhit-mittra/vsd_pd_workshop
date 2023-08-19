@@ -711,7 +711,18 @@ Look thoroughly for the cell `sky130_vsdinv`. After locating the cell, hover you
 <a id="pre_sta"></a>
 ### Slack fixing and Pre-Layout STA :
 
-After successfull placement of our custom inverter cell in the floorplan layout, we embark on the path to optimize the timing performance of the overall design. This opens the gates to Static Timing Analysis which will be done by the `openSTA` tool.  
+After successful placement of our custom inverter cell in the floorplan layout, we embark on the path to optimize the timing performance of the overall design. This opens the gates to Static Timing Analysis which will be done by the `openSTA` tool.  
+
+Before proceeding to use `openSTA` for timing analysis, we require to make some modifications in the `base.sdc` file that is present in the <enter-path> directory. Appending the modifications, the `base.sdc` file is renamed as `my_base.sdc` and is copied to the `src` files in the `picorv32a` design directory.
+The additional constraints that were appended to `base.sdc` are mentioned below.
+```
+<extra_constraints here>
+
+```
+
+![my_base.sdc image](/images/my_base_sdc.png)
+
+
 
 
 
