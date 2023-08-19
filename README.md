@@ -735,6 +735,8 @@ Additionally, the inverter driving cell `sky130_fd_sc_hd_inv_8` characteristics 
 
 ![inv_8 information brief](/images/inv_8_cap.png)
 
+Finally, as we have created a modified sdc (
+
 
 
 
