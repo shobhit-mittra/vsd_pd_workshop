@@ -49,6 +49,8 @@
         - [Generate LEF file](#gen_lef)
         - [Preparing and Running OpenLANE flow](#prep_ol)
         - [Pre-Layout STA](#pre_sta)
+            - [Preparing for STA](#prep_sta)
+            - [Invoking OpenSTA](#inv_sta)
             - [Slack Fixing](#fix_slack)
             - []()
             - []()
@@ -713,9 +715,12 @@ Look thoroughly for the cell `sky130_vsdinv`. After locating the cell, hover you
 
 
 <a id="pre_sta"></a>
-### Slack fixing and Pre-Layout STA :
+### Pre-Layout STA :
 
 After successful placement of our custom inverter cell in the floorplan layout, we embark on the path to optimize the timing performance of the overall design. This opens the gates to Static Timing Analysis which will be done by the `openSTA` tool.  
+
+<a id="prep_sta"></a>
+##### Preparing for STA 
 
 Before proceeding to use `openSTA` for timing analysis, we require to make some modifications in the `base.sdc` file that is present in the <enter-path> directory. Appending the modifications, the `base.sdc` file is renamed as `my_base.sdc` and is copied to the `src` files in the `picorv32a` design directory.
 The additional constraints that were appended to `base.sdc` are mentioned below.
@@ -730,7 +735,7 @@ set ::env(SYNTH_CAP_LOAD) 17.65
 ![my_base.sdc image](/images/my_base_sdc.png)
 
 
-> [!NOTE]
+> [!IMPORTANT]
 > The environment variables for `synthesis`, `floorplan`, `placement` and more can be found in the `configuration` directory that is present in the `openlane_working_dir/openlane` path in the `README.md` (first mentioned in [Day-2](#fp_pl)). 
 
 ![Synthesis Environment variables](/images/readme_synthesis_vars.png)
@@ -739,7 +744,23 @@ Additionally, the inverter driving cell `sky130_fd_sc_hd_inv_8` characteristics 
 
 ![inv_8 information brief](/images/inv_8_cap.png)
 
-Finally, as we have created a modified sdc `my_base.sdc` and have it in the `src` directory of `picorv32a` design, our 
+Last but not least, since we have a modified sdc called `my_base.sdc` and have it in the `src` directory of the `picorv32a` design, we need to create a script that would be input to the sta tool and contain the data that will help the sta tool find the required files, such as sdc, liberty, reporting commands, etc. 
+
+![pre_sta.conf script](/pre_sta_conf.png)
+
+> [!NOTE]
+> The pre_sta.conf file is attached to the `main` branch of this repositry. Please take a look at it for further reference. 
+
+<a id="inv_sta"></a>
+##### Invoking OpenSTA 
+
+Finally, use the command as below to invoke the `openSTA` tool. Pass the `pre_sta.conf` script to the tool and observe the timing reports.
+```
+sta pre_sta.conf
+```
+
+![running openSTA](/images/run_sta)
+
 
 
 
