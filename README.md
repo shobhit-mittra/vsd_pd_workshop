@@ -721,12 +721,19 @@ set ::env(CLOCK_PERIOD) 12.000
 set ::env(SYNTH_DRIVING_CELL) sky130_fd_sc_hd__inv_8
 set ::env(SYNTH_DRIVING_CELL_PIN) Y
 set ::env(SYNTH_CAP_LOAD) 17.65
-
 ```
 
 ![my_base.sdc image](/images/my_base_sdc.png)
 
 
+> [!NOTE]
+> The environment variables for `synthesis`, `floorplan`, `placement` and more can be found in the `configuration` directory that is present in the `openlane_working_dir/openlane` path in the `README.md` (first mentioned in [Day-2](#fp_pl)). 
+
+![Synthesis Environment variables](/images/readme_synthesis_vars.png)
+
+Additionally, the inverter driving cell `sky130_fd_sc_hd_inv_8` characteristics can be found in the `sky130_fd_sc_hd__*.lib` liberty files that . The load capacitance information in the constraints above was used from the liberty files itself. 
+
+![inv_8 information brief](/images/inv_8_cap.png)
 
 
 
