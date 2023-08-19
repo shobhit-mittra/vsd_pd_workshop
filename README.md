@@ -48,14 +48,18 @@
         - [Updating the inverter cell](#upd_inv)
         - [Generate LEF file](#gen_lef)
         - [Preparing and Running OpenLANE flow](#prep_ol)
-        - [Slack fixing and Pre-Layout STA](#pre_sta)
+        - [Pre-Layout STA](#pre_sta)
+            - [Slack Fixing](#fix_slack)
+            - []()
+            - []()
+        - [Clock Tree Synthesis using TritonCTS](#cts)
+        - [Invoking OpenROAD](#inv_or)
       
+8. Day-5 : Final stages of RTL-to-GDS2 flow and closure 
 
-9. Day-5 : Final stages of RTL-to-GDS2 flow and closure 
+9. Overall Experience 
 
-10. Overall Experience 
-
-11. Acknowledgements 
+10. Acknowledgements 
 <br/>
 
 <a id="overview"></a>
@@ -735,7 +739,7 @@ Additionally, the inverter driving cell `sky130_fd_sc_hd_inv_8` characteristics 
 
 ![inv_8 information brief](/images/inv_8_cap.png)
 
-Finally, as we have created a modified sdc (
+Finally, as we have created a modified sdc `my_base.sdc` and have it in the `src` directory of `picorv32a` design, our 
 
 
 
