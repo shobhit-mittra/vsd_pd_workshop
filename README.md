@@ -746,7 +746,7 @@ Additionally, the inverter driving cell `sky130_fd_sc_hd_inv_8` characteristics 
 
 Last but not least, since we have a modified sdc called `my_base.sdc` and have it in the `src` directory of the `picorv32a` design, we need to create a script that would be input to the sta tool and contain the data that will help the sta tool find the required files, such as sdc, liberty, reporting commands, etc. 
 
-![pre_sta.conf script](/pre_sta_conf.png)
+![pre_sta.conf script](/pre_sta_config.png)
 
 > [!NOTE]
 > The pre_sta.conf file is attached to the `main` branch of this repositry. Please take a look at it for further reference. 
@@ -759,7 +759,7 @@ Finally, use the command as below to invoke the `openSTA` tool. Pass the `pre_st
 sta pre_sta.conf
 ```
 
-![running openSTA](/images/run_sta)
+![running openSTA](/images/run_sta.png)
 
 
 
