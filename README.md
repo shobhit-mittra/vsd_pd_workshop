@@ -45,7 +45,6 @@ I sincerely hope that anybody reading this discovers something new about physica
 
 ### Non-Technical :
 - Zeal to learn 
-<br/>
 
 <a id="inst"></a>
 ## Installation 
