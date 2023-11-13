@@ -10,7 +10,7 @@
 - [Pre-Requisites](#pre_req) 
 - [Installation](#inst)
 - [Day-1 : Inception of open-source EDA. OpenLANE and Sky130 PDK](Theory.md/#day1)
-- [Day-2 : Floor-Planning and Introduction to Library Cells](#day2) 
+- [Day-2 : Floor-Planning and Introduction to Library Cells](Theory.md/#day2) 
 - [Day-3 : Designing Library Cells using magic and ngspice tools](#day3) :
 - [Day-4 : Pre-Layout Timing Analysis](#day4)
 - Day-5 : Final stages of RTL-to-GDS2 flow and closure 
