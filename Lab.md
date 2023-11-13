@@ -1,9 +1,10 @@
 # Lab-Work : 
 This file archieves all the lab-work undertaken during the 5-Day workshop. I'm in the process of completing this file.
 
+<br/>
 
 <a id="day1"></a>
-## Day-1 : Floor-Planning and Introduction to Library Cells :
+## Day-1 : Inception of open-source EDA. OpenLANE and Sky130 PDK :
 
 <a id="sky_pdk"></a>
 ### SkyWater PDKs
