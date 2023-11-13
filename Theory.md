@@ -196,6 +196,7 @@ Checks :
    - `Magic` : Performs DRC Checks & Antenna Checks
    - `Netgen` : Performs LVS Checks
       
+<br/>
 
 <a id="day2"></a>
-## Day-2 : Inception of open-source EDA. OpenLANE and Sky130 PDK
+## Day-2 : Floor-Planning and Introduction to Library Cells
