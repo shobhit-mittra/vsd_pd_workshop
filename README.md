@@ -67,7 +67,7 @@
 ## Segregation :
 The repositry is organised as two seperate directories, one to archieve all the theory-based knowledge gained and the other for the lab work in the workshop. Hence, the division is as follows :
 1. [Theory Work](Theory.md)
-2. [Lab Work](Labs.md)
+2. [Lab Work](Lab.md)
 
 
 <a id="overview"></a>
