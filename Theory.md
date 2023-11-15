@@ -26,7 +26,7 @@ The workshop's primary goal on the first day was to familiarise us with the foun
 
 The most commonly used application software or apps such as Microsoft Word, Excel, Powerpoint etc. run on a system i.e the hardware which is essentially a combination of multiple components making up the chip. Hene there exists an elaborate pathway that ensues the communication between the hardaware and the software applications. The illustration below showcases the hardware-software coupling : 
 
-![Hardware-Software Coupling](/images/hw-sw_coupling.png)
+![Hardware-Software Coupling](/images/theory/hw-sw_coupling.png)
 
 As it is evident in the illustration above, there lies an elaborate pathway for the communication between hardware and software. To briefly explain this pathway:
 
@@ -44,18 +44,18 @@ The flow can be visualized in a better way via an example :
 > Let us take an instance of operating a basic Stop-Watch app.
 >> Re-tracing the flow from the beginning the output of the OS could look something like under :
 >> 
->> ![o/p of OS eg](/images/os_op_eg.png)
+>> ![o/p of OS eg](/images/theory/os_op_eg.png)
 >>
 >> ###### *A simple C-program capturing the behaviour of stop-watch app.*
 >> 
 >> The compiler processes this code to generate the instruction set specific to the chip being used. In this workshop we would be focusing on "picorv32a" core, hence the instruction set would follow the RISC-V Architecture. The illustration below showcases the sample generated compiler :
 >>
->> ![compiler_op_eg](/images/compiler_op_eg.png)
+>> ![compiler_op_eg](/images/theory/compiler_op_eg.png)
 >>
 >> 
 >> The instruction set from compiler are then taken by the assembler to generate a machine language program that is interpreted by the chip.
 >>
->> ![assembler_op_eg](images/assembler_op_eg.png)
+>> ![assembler_op_eg](images/theory/assembler_op_eg.png)
 >>
 >> 
 >> As observed in the snippet above, the assembler converts the sample instruction *"add x6,x10,x6"* (that essentially means adding the contents of registers *x6* and *x10* and putting the result into *x6* register) into an op-code that can be implemented by the hardware.
@@ -70,7 +70,7 @@ The flow can be visualized in a better way via an example :
 
 A basic System-On-Chip (commany reffered as SoC) serves as the heart to most of the intricate electronic systems. The components required to create an ASIC can be visualised via the image below : 
 
-![ASIC Requirements](/images/digital_asic_design_req.png)
+![ASIC Requirements](/images/theory/digital_asic_design_req.png)
 
 These three fundamental components : **RTL IP's**, **EDA Tools** and **PDK Data** are vital for SoC develpoment. These industry-standard components aren't readily available to the masses and hence it has been a challenge to get hands-on experience on the VLSI flow. Fortunately, the open-source version of these components are available on the internet that can be used to bridge the gap between academic learning and industry-level work. 
 
@@ -88,7 +88,7 @@ Before exploring the open-source realm of VLSI, we need to develop a basic insig
 
 The process of experiencing the ASIC designing is easier than ever due to the components becoming Open-Source. The illustration below shocases the various open-source platforms available. We will primarily discuss on a specific flow : **OpenLANE** which uses an array of Open-Source tools to automate the design flow, later on in this segment.
 
-![Open-Source ASIC](/images/asic_open_src.png)
+![Open-Source ASIC](/images/theory/asic_open_src.png)
 
 <br/>
 
@@ -97,17 +97,17 @@ The process of experiencing the ASIC designing is easier than ever due to the co
 
 In an ASIC Design, the typical RTL-to-GDS2 flow is demonstrated in the illustration below : 
 
-![RTL-to-GDS2 flow](/images/rtl_gds2_flow.png)
+![RTL-to-GDS2 flow](/images/theory/rtl_gds2_flow.png)
 
 In the workshop, a simplified version of this flow was introduced which is just enough to grasp the idea of the overall flow. This simplified flow is demonstrated below : 
 
-![RTL-to-GDS2_simplified_flow](/images/rtl_gds2_sim_flow.png)
+![RTL-to-GDS2_simplified_flow](/images/theory/rtl_gds2_sim_flow.png)
 
 These steps can be briefly explained follows :
 
 - Sythesis : This is the first step in the basic flow. RTL created using any HDL (Verilog, VHDL) alongwith the design and environment constraints(reffered as SDC: Synopsys Design Constraint) are used in synthesis process to generate a synthesised *gate-level netlist*. This netlist demonstrates the logical conectivity of the RTL design.
   >The following illustration shows a basic Sythesis from an RTL :
-  >> ![Synthesis Example](/images/flow_synth.png)
+  >> ![Synthesis Example](/images/theory/flow_synth.png)
 
 - Floor Planning and Power Planning : FP/PP could differ in meaning depending on the scope of implementation on the design. Typically, the scope include:
     - Macro-level and,
@@ -115,27 +115,27 @@ These steps can be briefly explained follows :
 
   The objective of FP/PP is to plan the silicon area and create robust power network to efficiently power the design.
   > The Macro and Chip level floorplanning are briefly described as under :
-  >> ![Macro Floorplan](/images/macro_fp.png)
+  >> ![Macro Floorplan](/images/theory/macro_fp.png)
   >>
-  >> ![Chip Floorplan](/images/chip_fp.png)
+  >> ![Chip Floorplan](/images/theory/chip_fp.png)
 
   In power planning, the power network is constructed. Typically, a chip is powered by multiple Vdd and Vss pins. The power pins are connected to all components through power rings and horizontal/vertical straps.
   > [!NOTE]
   > The parallel cross-sectional structure (as shown in figure below) is meant to reduce the resistance and ultimately minimise the IR drop and mitigate the electro-migration problem.
   
-  ![Power Planning](/images/power_plan.png)
+  ![Power Planning](/images/theory/power_plan.png)
 <br/>
    
 - Placement : After the FP/PP stage comes the Placement stage. In this stage, the macro cells from the gate-level netlist are placed on the designed floorplan. The connected cells are placed close to each other to minimise *inter-connect* delay and to ensure effective post-placement optimization for easier routing.
 
   > Placemet can be visualised using the illustration below :
-  >> ![Placement Example](/images/placement_intro.png)
+  >> ![Placement Example](/images/theory/placement_intro.png)
   >> ###### *In this example the macro-cells of simple gate-level netlist containing inverter,nand gate, or gate and d-flip flop are placed close to each other in the floor plan.*
 
   Placement is typically done in two steps, namely **Global** and **Detailed** routing.
   
   > These two placement methods can be briefly explained as under :
-  >> ![Placement Types](/images/placement_types.png)
+  >> ![Placement Types](/images/theory/placement_types.png)
   >> ###### *The first image shows the global placement and the second shows detailed placement.*
   >> The global placement tries to evaluate the most optimal positions for all cells. But these positions may not be **legal**, that means the cells might overlap or may go off the floorplan allocated.
   >> 
@@ -145,13 +145,13 @@ These steps can be briefly explained follows :
 - Clock-Tree Synthesis (CTS) : Before proceeding to routing, we need to perform the CTS on the post-placement layout. The clock needs to reach multiple cells in the layout hence, to maintain the signal integrity it needs to go through stages of buffers and repeaters. This calls for an organized network to distribute the clock across the layout. This network is known as the Clock Tree.
 
   > The illustration below summarizes the CTS stage
-  >> ![Clock Tree Synthesis summary](/images/cts.png)
+  >> ![Clock Tree Synthesis summary](/images/theory/cts.png)
 <br/>
 
 - Routing : After CTS stage, we are required to do the Routing. It involves connecting the placed macro cells for signal propagation via nets. Given placements and fixed number of metal layers, the router tools is expected to find a valid pattern of horizontal and vertical wires to implement the nets. The metal layer information is extracted by the PDK that contains the parameters such as pitch, number of tracks, thickness, minimum width, vias etc.
 
   > Routing in *sky130 PDK* is shown as under :
-  >> ![Routing in sky130 PDK](/images/routing.png)
+  >> ![Routing in sky130 PDK](/images/theory/routing.png)
   >> ###### *The second figure illustrates the metal layer structure as defined in Sky130 PDK.*
 
   > [!IMPORTANT]
@@ -175,7 +175,7 @@ These steps can be briefly explained follows :
 
 There are various steps to the OpenLANE flow. By default, each step of the flow is carried out in sequence. There may be several sub-stages within each stage. As demonstrated below, OpenLANE can also be used interactively.
 
-![OpenLANE flow](/images/openlane_flow.png)
+![OpenLANE flow](/images/theory/openlane_flow.png)
 
 Synthesis :
    - `Yosys` : Performs RTL synthesis
