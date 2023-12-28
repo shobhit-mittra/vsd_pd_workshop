@@ -30,7 +30,7 @@ The most commonly used application software or apps such as Microsoft Word, Exce
 
 As it is evident in the illustration above, there lies an elaborate pathway for the communication between hardware and software. To briefly explain this pathway:
 
-- The application requires an operating system to run on such as linux, MacOs, Windows etc. OS performs numerous tasks involving managment of memories and background processes. In this context, the OS job is to convert the software application into it's respective assembly language and further onto binary(machine language).
+- The application requires an operating system to run on such as linux, MacOs, Windows etc. OS performs numerous tasks involving managment of memories and background processes. In this context, the OS job is to convert the requests from the software application into it's respective assembly language and further onto binary(machine language).
 
 - Evidentally, the output of an OS is a simple C/C++/Java or other high-level language.
 
