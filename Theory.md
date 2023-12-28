@@ -24,7 +24,7 @@ The workshop's primary goal on the first day was to familiarise us with the foun
 <a id="hw-sw"></a>
 ### Exploring the Software-Hardware coupling :
 
-The most commonly used application software or apps such as Microsoft Word, Excel, Powerpoint etc. run on a system i.e the hardware which is essentially a combination of multiple components making up the chip. Hene there exists an elaborate pathway that ensues the communication between the hardaware and the software applications. The illustration below showcases the hardware-software coupling : 
+The most commonly used application software or apps such as Microsoft Word, Excel, Powerpoint etc. run on a system i.e the hardware which is essentially a combination of multiple components making up the chip. Hence there exists an elaborate pathway that ensues the communication between the hardaware and the software applications. The illustration below showcases the hardware-software coupling : 
 
 ![Hardware-Software Coupling](/images/theory/hw-sw_coupling.png)
 
