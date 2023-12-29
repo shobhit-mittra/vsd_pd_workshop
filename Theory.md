@@ -68,7 +68,7 @@ The flow can be visualized in a better way via an example :
 <a id="soc_os"></a>
 ### SoC using OpenSource Tools : 
 
-A basic System-On-Chip (commany reffered as SoC) serves as the heart to most of the intricate electronic systems. The components required to create an ASIC can be visualised via the image below : 
+A basic System-On-Chip (commany referred as SoC) serves as the heart to most of the intricate electronic systems. The components required to create an ASIC can be visualised via the image below : 
 
 ![ASIC Requirements](/images/theory/digital_asic_design_req.png)
 
@@ -105,7 +105,7 @@ In the workshop, a simplified version of this flow was introduced which is just 
 
 These steps can be briefly explained follows :
 
-- Sythesis : This is the first step in the basic flow. RTL created using any HDL (Verilog, VHDL) alongwith the design and environment constraints(reffered as SDC: Synopsys Design Constraint) are used in synthesis process to generate a synthesised *gate-level netlist*. This netlist demonstrates the logical conectivity of the RTL design.
+- Sythesis : This is the first step in the basic flow. RTL created using any HDL (Verilog, VHDL) alongwith the design and environment constraints(referred as SDC: Synopsys Design Constraint) are used in synthesis process to generate a synthesised *gate-level netlist*. This netlist demonstrates the logical conectivity of the RTL design.
   >The following illustration shows a basic Sythesis from an RTL :
   >> ![Synthesis Example](/images/theory/flow_synth.png)
 
