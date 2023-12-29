@@ -159,7 +159,7 @@ These steps can be briefly explained follows :
   > [!IMPORTANT]
   > The sky130 PDK defines **six metal layers**, the bottomost layer made of *Titanium Nitride* is known as *Local Interconnect Layer*. The rest of the five layers are all composed of aluminium.
 
-  Most routers construct the metal-layer grid using metal tracks. Since, the metal-grids are usually large **Divide and Conquer** approach is used that can be explained as under. 
+  Most routers construct the metal-layer grid using metal tracks. Since, the metal-grids are usually large; **Divide and Conquer** approach is used that can be explained as under. 
   - Global Routing : In the global route phase of the physical design, simplified routes are used to estimate routing lengths, and the routing estimates are used to determine resistance and capacitance that are needed to compute wire delays.
   - Final Routing : Uses the global routing guides to implement the actual wiring.
 <br/>
