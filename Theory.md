@@ -123,7 +123,8 @@ These steps can be briefly explained follows :
   
   > [!NOTE]
   > The parallel cross-sectional structure (as shown in figure below) is meant to reduce the resistance and ultimately minimise the IR drop and mitigate the electro-migration problem.
-  
+
+  Here Vdd implies the power supply and Vss refers to the ground.
   ![Power Planning](/images/theory/power_plan.png)
 <br/>
    
