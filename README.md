@@ -42,15 +42,29 @@ I sincerely hope that anybody reading this discovers something new about physica
 ### Technical :
 - Ubuntu OS-based System
 - 25GB+ Disk Space
+- Python 3.6 or higher
+  - On Ubuntu, you may also need to install venv: `apt-get install python3-venv`
+
 
 ### Non-Technical :
 - Zeal to learn 
 
 <a id="inst"></a>
-## Installation 
+## Installation (updated)
+[ Picked from the documentation of openLane : https://openlane.readthedocs.io/en/latest/getting_started/installation/installation_ubuntu.html#installation-of-required-packages ]
+```
+git clone --depth 1 https://github.com/The-OpenROAD-Project/OpenLane.git
+cd OpenLane/
+make
+make test
+```
+This will install the openlane and sky130 pdk. If you get an error related to PDK not found ( [ERRoR] : Failed to compare PDKs ), then try running `make pdk`. This might generate an error that may be related to insufficient permissions for `.volare` folder. You may change the permissions of the .volare folder path as seen in  your error message in the terminal and then re-try by running `make pdk`. If the permissions are not getting changed you may use `sudo` and try again. If everything goes well, you will observe the pdks getting installed sequentially. 
 
-Visit the link : https://github.com/nickson-jose/openlane_build_script for installation steps
-
+After the pdks are installed you may try running `make test` that will run a ~5 minute test that verifies that the flow and the PDK were properly installed. 
+Successful output generated is as under :
+```
+Basic test passed
+```
 
 
 
