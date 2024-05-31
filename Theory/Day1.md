@@ -1,22 +1,3 @@
-# Theory :
-
-This file is an archieve to all the insights and knowledge I garnered through the workshop. It contains all the 5-Days of workshop separately. I am in the process of completing this file as I carve my handwritten notes onto this file. The heirarchical index in this file is as under :
-
-## Index : 
-- [Day-1 : Inception of open-source EDA, OpenLANE and Sky130 PDK](#day1)
-  
-    - [Exploring the Software-Hardware coupling](#hw-sw)
-    - [SoC using Open-Source Tools](#soc_os)
-    - [Introduction to RTL-to-GDS2 flow](#rtl_gds2)
-    - [OpenLANE flow](#ol_flow)
-    
-- [Day-2 : Floor-Planning and Introduction to Library Cells](#day2)
-- [](#day3)
-- [](#day4)
-- [](#day5)
-
-
-<a id="day1"></a>
 ## Day-1 : Inception of open-source EDA, OpenLANE and Sky130 PDK
 
 The workshop's primary goal on the first day was to familiarise us with the foundational ideologies outlined below in order to lay the groundwork for the days to come.
@@ -211,8 +192,3 @@ GDSII Generation :
 Checks :
    - `Magic` : Performs DRC Checks & Antenna Checks
    - `Netgen` : Performs LVS Checks
-      
-<br/>
-
-<a id="day2"></a>
-## Day-2 : Floor-Planning and Introduction to Library Cells
