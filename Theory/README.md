@@ -13,6 +13,6 @@ The heirarchical index in this file is as under :
     - [OpenLANE flow](Day1.md/#ol_flow)
     
 - [Day-2 : Floor-Planning and Introduction to Library Cells](Day2.md)
-- [](#day3)
-- [](#day4)
-- [](#day5)
+- [Day-3 : Designing Library Cells using magic and ngspice tools](#day3)
+- [Day-4 : Pre-Layout Timing Analysis](#day4)
+- [Day-5 : Final stages of RTL-to-GDS2 flow and closure](#day5)
