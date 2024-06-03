@@ -11,8 +11,10 @@ effort as they propagate deeper into the flow. Constraint validation can be perf
 
 Post Netlist QA and sanity checks floorplan can be done. This stage can itself be divided into smaller steps that are roughly as follows :
 
-- Defining `Aspect Ratio` (Height and width of core and die area)
+- Defining `Aspect Ratio` (Height and width of core and die area) :
+  > Finding the optimal dimmensions of core and die (`Apect Ratio = Height/Width of core`) requires understanding of the area occupied by the cells in the netlist. `Utilisation factor` is an important factor to consider which essentially captures the ratio of total area occupied by the netlist to total core area. Conventionally, the utilisation factor is decided to be close to *50-60%* or *0.5-0.6* so that during placement optimisation stages and routing there is enough room for the additional cells and routes in the floorplan. This decision helps the PD team to arrive at an optimal aspect ratio.
 - Locating and deciding the positions of `Pre-placed cells` if any
+  > 
 - Covering the pre-placed cells using `de-coupling capacitors`
 - Defining power grid for the floorplan : `Power Planning`
 - I/O Pad placement
