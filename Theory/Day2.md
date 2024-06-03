@@ -14,8 +14,12 @@ Post Netlist QA and sanity checks floorplan can be done. This stage can itself b
 - Defining `Aspect Ratio` (Height and width of core and die area) :
   > Finding the optimal dimmensions of core and die (`Apect Ratio = Height/Width of core`) requires understanding of the area occupied by the cells in the netlist. `Utilisation factor` is an important factor to consider which essentially captures the ratio of total area occupied by the netlist to total core area. Conventionally, the utilisation factor is decided to be close to *50-60%* or *0.5-0.6* so that during placement optimisation stages and routing there is enough room for the additional cells and routes in the floorplan. This decision helps the PD team to arrive at an optimal aspect ratio.
 - Locating and deciding the positions of `Pre-placed cells` if any
-  > 
+  > Pre-placed cells typically include analog blocks, hard IP's, memory blocks. Say there exists a combinational cloud, as shown below, that consits of good amount of gate instances (50k-100k instances). These can be divided further by using cuts (cut1 and cut2 in the figure) for simplicity. These cells are generally sensitive to noise or are critical in nature hence they need to be placed before the automated placement of standard cells in the placement stage.
+  > ![Pre-Placed Cells example](/images/theory/pre_place_cells1.png)
+  > In case of replicating and re-using the logic, they can be `black-boxxed` and used as modules further in the design.
+  > ![Pre-Placed cells example 2](/images/theory/pre_place_cells2.png)
 - Covering the pre-placed cells using `de-coupling capacitors`
+  >
 - Defining power grid for the floorplan : `Power Planning`
 - I/O Pad placement
 - `Macro` placement
