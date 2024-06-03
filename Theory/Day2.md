@@ -19,7 +19,7 @@ Post Netlist QA and sanity checks floorplan can be done. This stage can itself b
   > In case of replicating and re-using the logic, they can be `black-boxxed` and used as modules further in the design.
   > ![Pre-Placed cells example 2](/images/theory/pre_place_cells2.png)
 - Covering the pre-placed cells using `de-coupling capacitors`
-  >
+  > The 
 - Defining power grid for the floorplan : `Power Planning`
 - I/O Pad placement
 - `Macro` placement
